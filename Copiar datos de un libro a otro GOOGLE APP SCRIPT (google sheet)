@@ -1,0 +1,21 @@
+Por supuesto, aquí te proporciono un código de ejemplo en Google Apps Script que copia la información del rango A1:D7 de una hoja de cálculo a otra:
+
+
+function copiarDatos() {
+  // Obtener la hoja de origen y el rango a copiar
+  var origen = SpreadsheetApp.getActiveSpreadsheet();
+  var origenHoja = origen.getSheetByName("Hoja1");
+  var origenRango = origenHoja.getRange("A1:D7");
+
+  // Obtener la hoja de destino y el rango donde pegar
+  var destino = SpreadsheetApp.openById("ID_DEL_LIBRO_DESTINO");
+  var destinoHoja = destino.getSheetByName("Hoja2");
+  var destinoRango = destinoHoja.getRange("A1:D7");
+
+  // Copiar los valores del rango origen al rango destino
+  origenRango.copyTo(destinoRango);
+}
+
+En este código, debes reemplazar "ID_DEL_LIBRO_DESTINO" por el ID del libro de Google Sheets donde deseas enviar la información. También puedes ajustar los nombres de las hojas y los rangos según sea necesario.
+
+Una vez que hayas agregado este código a tu proyecto en Google Apps Script, puedes ejecutar la función "copiarDatos" para copiar la información del rango A1:D7 de la hoja "Hoja1" a la hoja "Hoja2" del libro de destino.
