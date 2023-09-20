@@ -1,0 +1,22 @@
+function copiarYpegarRango() {
+  // Abre el libro "Nombre_Libro"
+  var libroOrigen = SpreadsheetApp.openById('ID_Archivo');
+  var hojaOrigen = libroOrigen.getSheetByName('Nombre_Hoja');
+  var rangoOrigen = hojaOrigen.getRange('A7:BK73');
+  
+  // Obtén los valores del rango en el libro origen
+  var valoresRangoOrigen = rangoOrigen.getValues();
+  
+  // Abre el libro "S&OP dataset"
+  var libroDestino = SpreadsheetApp.openById('ID_Archivo_Destion');
+  var hojaDestino = libroDestino.getSheetByName('Hoja_Destino');
+  
+  // Encuentra la última fila en la hoja de destino
+  var ultimaFila = hojaDestino.getLastRow() + 1;
+  
+  // Pega los valores en el libro de destino en la ubicación deseada
+  hojaDestino.getRange(ultimaFila, 1, valoresRangoOrigen.length, valoresRangoOrigen[0].length).setValues(valoresRangoOrigen);
+
+  Browser.msgBox("La información ha sido cargada correctamente.", "Información", Browser.Buttons.OK);
+
+}
